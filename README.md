@@ -14,3 +14,7 @@ In fact, they're should be like this:
 
 ## Is this safe?
 Yes.
+
+## What are those addons in Releases?
+
+Personal addons (by YourLocalMoon), just to reupload them.
