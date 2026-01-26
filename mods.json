@@ -1,7 +1,6 @@
 {
   "mods": [
     {
-      "id": "example-addon",
       "name": "Example Addon",
       "author": "Team HL2SB++",
       "version": "1.0",
