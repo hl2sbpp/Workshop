@@ -1,0 +1,15 @@
+{
+  "mods": [
+    {
+      "id": "example-addon",
+      "name": "Example Addon",
+      "author": "Team HL2SB++",
+      "version": "1.0",
+      "description": "Nothing!",
+      "download_url": "https://github.com/hl2sbpp/ExampleAddon/releases/download/v1.0/Release.zip",
+      "preview": "https://raw.githubusercontent.com/hl2sbpp/ExampleAddon/main/preview.png",
+      "size_mb": 12,
+      "id": 1024
+    }
+  ]
+}
