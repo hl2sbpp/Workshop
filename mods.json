@@ -1,14 +1,4 @@
 {
   "mods": [
-    {
-      "name": "Karen Katphish player model",
-      "author": "Makinjo20",
-      "version": "1.0",
-      "description": "No Description",
-      "download_url": "https://github.com/hl2sbpp/Workshop/raw/main/addons/Karen_Katphish_player_model.zip",
-      "preview": "https://github.com/hl2sbpp/Workshop/raw/main/thumbs/Karen_Katphish_player_model.png",
-      "size_mb": 4,
-      "id": 1024
-    }
   ]
 }
