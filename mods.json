@@ -1,4 +1,14 @@
 {
   "mods": [
+    {
+      "name": "Karen Katphish player model",
+      "author": "Makinjo20",
+      "version": "1.0",
+      "description": "Download: https://github.com/user-attachments/files/24870255/Karen.Katphish.zip",
+      "download_url": "https://github.com/user-attachments/assets/eafd45cc-40b4-49db-a626-6a8cda26618f\"",
+      "preview": "https://raw.githubusercontent.com/ThePixelMoon/Workshop/main/thumbs/unknown.png",
+      "size_mb": 1,
+      "id": 1024
+    }
   ]
 }
