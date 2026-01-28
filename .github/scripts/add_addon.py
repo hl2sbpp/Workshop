@@ -45,10 +45,10 @@ for line in kv_lines:
     addon[key.strip().lower()] = val.strip()
 
 if "download" not in addon:
-    print("Error: 'Name' and 'Download' are required fields.")
+    print("Error: 'Download' URL is required.")
     sys.exit(1)
 
-addon["description"] = "\n".join(desc_lines).strip()
+addon["description"] = "\n".join(desc_lines).strip() or "No Description"
 addon["name"] = issue_title
 
 addon["author"] = issue_author
