@@ -1,0 +1,27 @@
+name: Add Addon
+
+on:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  add-addon:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.11"
+
+    - name: Install dependencies
+      run: pip install requests
+
+    - name: Process Issue
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        ISSUE_BODY: ${{ github.event.issue.body }}
+        ISSUE_NUMBER: ${{ github.event.issue.number }}
+      run: python .github/scripts/add_addon.py
