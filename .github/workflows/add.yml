@@ -39,3 +39,9 @@ jobs:
         git push origin HEAD:main
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Close issue
+      uses: peter-evans/close-issue@v2
+      with:
+        issue-number: ${{ github.event.issue.number }}
+        comment: "Addon added!"
