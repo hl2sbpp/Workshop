@@ -206,12 +206,3 @@ with open(ADDONS_FILE, "w", encoding="utf-8") as f:
     f.write("\n")
 
 print(f"Addon '{addon_json['name']}' added with ID {addon_json['id']}.")
-
-files_to_commit = [ADDONS_FILE, str(local_addon_file)]
-if local_thumb_file:
-    files_to_commit.append(str(local_thumb_file))
-if file_size_bytes > 100 * 1024 * 1024:
-    files_to_commit.append(".gitattributes")
-
-with open("files_to_commit.txt", "w") as f:
-    f.write("\n".join(files_to_commit))
