@@ -39,7 +39,7 @@ jobs:
           ISSUE_TITLE: ${{ github.event.issue.title }}
           ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
           GITHUB_REPOSITORY: ${{ github.repository }}
-        run: python add_addon.py
+        run: python .github/scripts/add_addon.py
       
       - name: Commit and push changes
         run: |
