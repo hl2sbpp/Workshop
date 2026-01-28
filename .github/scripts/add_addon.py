@@ -178,7 +178,8 @@ if preview_url:
         
         local_thumb_file = local_file
         addon["preview"] = f"https://raw.githubusercontent.com/{repo}/main/thumbs/{local_file.name}"
-    except Exception:
+    except Exception as e:
+        print(f"Warning: Failed to download thumbnail from {preview_url}: {e}")
         addon["preview"] = default_preview
 else:
     addon["preview"] = default_preview
