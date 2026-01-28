@@ -14,30 +14,6 @@ jobs:
       issues: write
     
     steps:
-      - name: Check if user is org member
-        id: check_member
-        uses: actions/github-script@v7
-        with:
-          script: |
-            try {
-              const isMember = await github.rest.orgs.checkMembershipForUser({
-                org: context.repo.owner,
-                username: context.actor
-              });
-              return isMember.status === 204;
-            } catch (error) {
-              if (error.status === 404) {
-                return false;
-              }
-              throw error;
-            }
-      
-      - name: Exit if not org member
-        if: steps.check_member.outputs.result == 'false'
-        run: |
-          echo "User is not an organization member. Skipping."
-          exit 0
-      
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
