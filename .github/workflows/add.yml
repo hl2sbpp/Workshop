@@ -3,6 +3,8 @@ name: Add Addon
 on:
   issues:
     types: [opened, edited]
+  issue_comment:
+    types: [created]
 
 jobs:
   add-addon:

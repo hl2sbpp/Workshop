@@ -6,6 +6,11 @@ import sys
 import requests
 from pathlib import Path
 
+comment_body = os.environ.get("COMMENT_BODY", "")
+if comment_body and not comment_body.strip().startswith("/add-addon"):
+    print("No /add-addon command found, exiting.")
+    exit(0)
+
 thumbs_dir = Path("thumbs")
 thumbs_dir.mkdir(exist_ok=True)
 
