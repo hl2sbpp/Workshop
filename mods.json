@@ -49,6 +49,16 @@
       "preview": "https://raw.githubusercontent.com/hl2sbpp/Workshop/main/thumbs/COD_MW2_SWEPs.png",
       "size_mb": 33,
       "id": 1028
+    },
+    {
+      "name": "GTA IV Sweps",
+      "author": "therizzler-dot",
+      "version": "1.0",
+      "description": "It adds some sweps \"of\" GTA IV to your game. This addon is not finished at all and might be updated soon, use console commands to obtain Weapons.\nThere are 4 Weapons that you can get.",
+      "download_url": "https://raw.githubusercontent.com/hl2sbpp/Workshop/main/addons/GTA_IV_Sweps.zip",
+      "preview": "https://raw.githubusercontent.com/hl2sbpp/Workshop/main/thumbs/GTA_IV_Sweps.png",
+      "size_mb": 1,
+      "id": 1029
     }
   ]
 }
