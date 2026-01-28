@@ -29,6 +29,16 @@
       "preview": "https://raw.githubusercontent.com/hl2sbpp/Workshop/main/thumbs/MWII_AK47_With_GTA_V_Models.png",
       "size_mb": 4,
       "id": 1026
+    },
+    {
+      "name": "Extra Stuff Mod: Remade",
+      "author": "YourLocalCappy",
+      "version": "1.0",
+      "description": "Addon made by YourLocalCappy/YourGlobalCappy\n\nCredits:\nLua scripts — YourLocalCappy\nScripted Weapons (SWEPs) — YourLocalCappy\nSquirting Blood — 3-FU-NK-IN-2 (GameBanana)\nImproved Effects — BOMBER (GameBanana)",
+      "download_url": "https://raw.githubusercontent.com/hl2sbpp/Workshop/main/addons/Extra_Stuff_Mod__Remade.zip",
+      "preview": "https://raw.githubusercontent.com/hl2sbpp/Workshop/main/thumbs/Extra_Stuff_Mod__Remade.png",
+      "size_mb": 1,
+      "id": 1027
     }
   ]
 }
