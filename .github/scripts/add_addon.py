@@ -4,6 +4,10 @@ import re
 import json
 import sys
 import requests
+from pathlib import Path
+
+thumbs_dir = Path("thumbs")
+thumbs_dir.mkdir(exist_ok=True)
 
 ADDONS_FILE = "mods.json"
 
@@ -47,6 +51,21 @@ addon["version"] = addon.get("version", "1.0")
 
 img_match = re.search(r"(https?://\S+\.(?:png|jpg|jpeg|gif))", issue_body, re.IGNORECASE)
 addon["preview"] = img_match.group(1) if img_match else ""
+
+img_match = re.search(r"(https?://\S+\.(?:png|jpg|jpeg|gif))", issue_body, re.IGNORECASE)
+addon["preview"] = img_match.group(1) if img_match else ""
+
+preview_url = addon["preview"]
+if preview_url and "user-images.githubusercontent.com" in preview_url:
+    safe_name = re.sub(r"[^\w\-]", "_", addon["name"])
+    local_file = thumbs_dir / f"{safe_name}.png"
+
+    r = requests.get(preview_url)
+    r.raise_for_status()
+    with open(local_file, "wb") as f:
+        f.write(r.content)
+
+    addon["preview"] = f"https://raw.githubusercontent.com/hl2sbpp/Workshop/main/thumbs/{local_file.name}?raw=true"
 
 try:
     r = requests.head(addon["download"], allow_redirects=True, timeout=10)
