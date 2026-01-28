@@ -37,7 +37,7 @@
       "description": "Addon made by YourLocalCappy/YourGlobalCappy\n\nCredits:\nLua scripts — YourLocalCappy\nScripted Weapons (SWEPs) — YourLocalCappy\nSquirting Blood — 3-FU-NK-IN-2 (GameBanana)\nImproved Effects — BOMBER (GameBanana)",
       "download_url": "https://raw.githubusercontent.com/hl2sbpp/Workshop/main/addons/Extra_Stuff_Mod__Remade.zip",
       "preview": "https://raw.githubusercontent.com/hl2sbpp/Workshop/main/thumbs/Extra_Stuff_Mod__Remade.png",
-      "size_mb": 1,
+      "size_mb": 44,
       "id": 1027
     },
     {
@@ -47,7 +47,7 @@
       "description": "Bring Weapons from Call Of duty MW2 (2009) To HL2SBPP \n\nWeapons included\nHandguns\n- USP. 45\n- M9\n- .357 Anaconda \n- Desert eagle .50\n\nMachine Pistols\n- PP2000\n- TMP\n- M93 Raffica \n- G18\n\nSMGs\n- Mini Uzi\n- MP5K\n- UMP45\n- Kriss Vector \n- P90",
       "download_url": "https://raw.githubusercontent.com/hl2sbpp/Workshop/main/addons/COD_MW2_SWEPs.zip",
       "preview": "https://raw.githubusercontent.com/hl2sbpp/Workshop/main/thumbs/COD_MW2_SWEPs.png",
-      "size_mb": 1,
+      "size_mb": 33,
       "id": 1028
     }
   ]
