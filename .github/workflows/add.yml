@@ -1,8 +1,9 @@
 name: Add Addon
 
+
 on:
   issues:
-    types: [opened]
+    types: [opened, edited]
   issue_comment:
     types: [created]
 
@@ -14,6 +15,40 @@ jobs:
       issues: write
     
     steps:
+      - name: Check if triggered by comment
+        id: is_comment
+        run: |
+          if [ "${{ github.event_name }}" = "issue_comment" ]; then
+            echo "is_comment=true" >> $GITHUB_OUTPUT
+          else
+            echo "is_comment=false" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Check if actor is org member (for comments only)
+        id: check_member
+        if: steps.is_comment.outputs.is_comment == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            try {
+              const isMember = await github.rest.orgs.checkMembershipForUser({
+                org: context.repo.owner,
+                username: context.actor
+              });
+              return isMember.status === 204;
+            } catch (error) {
+              if (error.status === 404) {
+                return false;
+              }
+              throw error;
+            }
+      
+      - name: Exit if comment by non-member
+        if: steps.is_comment.outputs.is_comment == 'true' && steps.check_member.outputs.result == 'false'
+        run: |
+          echo "Comment author is not an organization member. Skipping."
+          exit 0
+
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
