@@ -59,6 +59,16 @@
       "preview": "https://raw.githubusercontent.com/hl2sbpp/Workshop/main/thumbs/GTA_IV_Sweps.png",
       "size_mb": 1,
       "id": 1029
+    },
+    {
+      "name": "Zombie Snpc Test",
+      "author": "therizzler-dot",
+      "version": "1.0",
+      "description": "Name: Zombie SNPC Test v1\nVersion: 1.0\nDownload: \n\n[Zombie SNPC.zip](https://github.com/user-attachments/files/24920402/Zombie.SNPC.zip)\n\nAdds a zombie to your game that kills you",
+      "download_url": "https://raw.githubusercontent.com/hl2sbpp/Workshop/main/addons/Zombie_Snpc_Test.zip",
+      "preview": "https://raw.githubusercontent.com/hl2sbpp/Workshop/main/thumbs/Zombie_Snpc_Test.png",
+      "size_mb": 4,
+      "id": 1030
     }
   ]
 }
