@@ -52,8 +52,10 @@ addon["version"] = addon.get("version", "1.0")
 img_match = re.search(r"(https?://\S+\.(?:png|jpg|jpeg|gif))", issue_body, re.IGNORECASE)
 addon["preview"] = img_match.group(1) if img_match else ""
 
+default_preview = "https://raw.githubusercontent.com/ThePixelMoon/Workshop/main/thumbs/unknown.png"
+
 img_match = re.search(r"(https?://\S+\.(?:png|jpg|jpeg|gif))", issue_body, re.IGNORECASE)
-addon["preview"] = img_match.group(1) if img_match else ""
+addon["preview"] = img_match.group(1) if img_match else default_preview
 
 preview_url = addon["preview"]
 if preview_url and "user-images.githubusercontent.com" in preview_url:
