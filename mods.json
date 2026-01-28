@@ -19,6 +19,16 @@
       "preview": "https://raw.githubusercontent.com/hl2sbpp/Workshop/main/thumbs/Zenless_Zone_Zero_Zhu_Yuan__PM_NPCs_.png",
       "size_mb": 7,
       "id": 1025
+    },
+    {
+      "name": "MWII AK47 With GTA V Models",
+      "author": "gusto865",
+      "version": "1.0",
+      "description": "GTA V AK47 With MWII Animations (MW19 Too)\n\nHow to inspect \nFirst Use console Command \"inspect\" to activate inspection \nSecond add This command in Touch.cfg \"+inspect\"",
+      "download_url": "https://raw.githubusercontent.com/hl2sbpp/Workshop/main/addons/MWII_AK47_With_GTA_V_Models.zip",
+      "preview": "https://raw.githubusercontent.com/hl2sbpp/Workshop/main/thumbs/MWII_AK47_With_GTA_V_Models.png",
+      "size_mb": 4,
+      "id": 1026
     }
   ]
 }
