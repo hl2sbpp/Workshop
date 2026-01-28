@@ -12,7 +12,6 @@ jobs:
     permissions:
       contents: write
       issues: write
-      members: read
     
     steps:
       - name: Check if user is org member
