@@ -82,6 +82,14 @@ else:
     file_match = re.search(r"(https?://\S+\.(?:zip|vpk))", selected_text, re.IGNORECASE)
     if file_match:
         download_url = file_match.group(1).strip().strip("\"'").rstrip(")>.,")
+    else:
+        gdrive_match = re.search(r"(https?://drive\.google\.com/[^\s]+)", selected_text, re.IGNORECASE)
+        if gdrive_match:
+            download_url = gdrive_match.group(1).strip().strip("\"'").rstrip(")>.,")
+        else:
+            mfire_match = re.search(r"(https?://(?:www\.)?mediafire\.com/file/[^\s]+)", selected_text, re.IGNORECASE)
+            if mfire_match:
+                download_url = mfire_match.group(1).strip().strip("\"'").rstrip(")>.,")
 
 if not download_url:
     print("Error: 'Download' URL is required. Must be a .zip or .vpk file.")
@@ -91,7 +99,8 @@ if not download_url:
 download_url = convert_to_direct_link(download_url)
 
 if not (download_url.lower().endswith('.zip') or download_url.lower().endswith('.vpk')):
-    print(f"Error: Download URL must be a .zip or .vpk file. Got: {download_url}")
+    print(f"Error: Download URL must point to a .zip or .vpk file. Got: {download_url}")
+    print("Make sure your Google Drive or MediaFire link points to a .zip or .vpk file.")
     sys.exit(1)
 
 addons_dir = Path("addons")
