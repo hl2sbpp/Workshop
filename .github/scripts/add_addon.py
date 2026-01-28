@@ -7,6 +7,26 @@ issue_title = os.environ.get("ISSUE_TITLE", "")
 issue_author = os.environ.get("ISSUE_AUTHOR", "")
 repo = os.environ.get("GITHUB_REPOSITORY", "hl2sbpp/Workshop")
 
+def convert_to_direct_link(url):
+    if "drive.google.com" in url:
+        file_id_match = re.search(r'/d/([a-zA-Z0-9_-]+)', url)
+        if not file_id_match:
+            file_id_match = re.search(r'id=([a-zA-Z0-9_-]+)', url)
+        if file_id_match:
+            file_id = file_id_match.group(1)
+            return f"https://drive.google.com/uc?export=download&id={file_id}"
+    
+    elif "mediafire.com" in url and "/file/" in url:
+        try:
+            r = requests.get(url, timeout=15)
+            direct_match = re.search(r'href="(https://download\d+\.mediafire\.com/[^"]+)"', r.text)
+            if direct_match:
+                return direct_match.group(1)
+        except Exception:
+            pass
+    
+    return url
+
 if comment_body:
     cb = comment_body.strip()
     if not cb.startswith("/add-addon"):
@@ -68,8 +88,33 @@ if not download_url:
     print("Provide 'Download: <url>' or include a .zip/.vpk URL in the issue/comment.")
     sys.exit(1)
 
+download_url = convert_to_direct_link(download_url)
+
 if not (download_url.lower().endswith('.zip') or download_url.lower().endswith('.vpk')):
     print(f"Error: Download URL must be a .zip or .vpk file. Got: {download_url}")
+    sys.exit(1)
+
+addons_dir = Path("addons")
+addons_dir.mkdir(exist_ok=True)
+
+ext = ".zip" if download_url.lower().endswith('.zip') else ".vpk"
+safe_name = re.sub(r"[^\w\-]", "_", addon.get("name", issue_title or "addon"))
+local_addon_file = addons_dir / f"{safe_name}{ext}"
+
+try:
+    r = requests.get(download_url, timeout=60, allow_redirects=True)
+    r.raise_for_status()
+    
+    with open(local_addon_file, "wb") as f:
+        f.write(r.content)
+    
+    file_size_bytes = len(r.content)
+    addon["size_mb"] = max(1, round(file_size_bytes / (1024 * 1024)))
+    
+    download_url = f"https://raw.githubusercontent.com/{repo}/main/addons/{local_addon_file.name}"
+except Exception as e:
+    print(f"Error: Failed to download and re-host addon file: {e}")
+    print("The addon file must be accessible for download.")
     sys.exit(1)
 
 addon["download"] = download_url
@@ -114,7 +159,6 @@ if preview_url:
     local_file = thumbs_dir / f"{safe_name}{ext}"
     
     try:
-        print(f"Downloading thumbnail from: {preview_url}")
         r = requests.get(preview_url, timeout=15)
         r.raise_for_status()
         
@@ -122,31 +166,10 @@ if preview_url:
             f.write(r.content)
         
         addon["preview"] = f"https://raw.githubusercontent.com/{repo}/main/thumbs/{local_file.name}"
-        print(f"Thumbnail saved to: thumbs/{local_file.name}")
-    except Exception as e:
-        print(f"Warning: Failed to download thumbnail: {e}")
+    except Exception:
         addon["preview"] = default_preview
 else:
     addon["preview"] = default_preview
-
-try:
-    if "github.com/user-attachments" in download_url or "user-attachments" in download_url:
-        raise Exception("skip-size-detection-for-user-attachments")
-    
-    print(f"Detecting file size from: {download_url}")
-    r = requests.head(download_url, allow_redirects=True, timeout=10)
-    size_bytes = r.headers.get("Content-Length")
-    
-    if not size_bytes or int(size_bytes) == 0:
-        r = requests.get(download_url, stream=True, timeout=15)
-        size_bytes = r.headers.get("Content-Length")
-    
-    size_bytes = int(size_bytes) if size_bytes else 0
-    addon["size_mb"] = max(1, round(size_bytes / (1024 * 1024))) if size_bytes > 0 else 1
-    print(f"Detected size: {addon['size_mb']} MB")
-except Exception as e:
-    print(f"Warning: Could not detect file size: {e}")
-    addon["size_mb"] = 1
 
 current_ids = [m.get("id", 0) for m in data.get("mods", [])]
 addon["id"] = max(current_ids, default=1023) + 1
@@ -168,3 +191,5 @@ data["mods"] = sorted(data["mods"], key=lambda x: x["id"])
 with open(ADDONS_FILE, "w", encoding="utf-8") as f:
     json.dump(data, f, indent=2, ensure_ascii=False)
     f.write("\n")
+
+print(f"Addon '{addon_json['name']}' added with ID {addon_json['id']}.")
