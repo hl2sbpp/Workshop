@@ -9,39 +9,60 @@ on:
 jobs:
   add-addon:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: write
+      issues: write
+    
     steps:
-    - uses: actions/checkout@v3
-
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: "3.11"
-
-    - name: Install dependencies
-      run: pip install requests
-
-    - name: Process Issue
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        ISSUE_BODY: ${{ github.event.issue.body }}
-        ISSUE_NUMBER: ${{ github.event.issue.number }}
-        ISSUE_TITLE: ${{ github.event.issue.title }}
-        ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
-      run: python .github/scripts/add_addon.py
-
-    - name: Commit mods.json
-      run: |
-        git config user.name "GitHub Actions"
-        git config user.email "actions@github.com"
-        git add mods.json thumbs/
-        git commit -m "Add addon ${{ github.event.issue.title }}" || echo "No changes to commit"
-        git push origin HEAD:main
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Close issue
-      uses: peter-evans/close-issue@v2
-      with:
-        issue-number: ${{ github.event.issue.number }}
-        comment: "Addon added!"
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 0
+      
+      - name: Setup Git LFS
+        run: |
+          git lfs install
+          
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: pip install requests
+      
+      - name: Run add_addon.py
+        env:
+          COMMENT_BODY: ${{ github.event.comment.body }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python add_addon.py
+      
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          if [ -f files_to_commit.txt ]; then
+            while IFS= read -r file; do
+              git add "$file"
+            done < files_to_commit.txt
+            
+            git commit -m "Add addon: ${{ github.event.issue.title }}" || exit 0
+            git push
+          fi
+      
+      - name: Comment on issue
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'Addon added'
+            })
