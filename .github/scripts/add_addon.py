@@ -12,6 +12,7 @@ with open(ADDONS_FILE, "r", encoding="utf-8") as f:
 
 issue_body = os.environ.get("ISSUE_BODY", "")
 issue_author = os.environ.get("ISSUE_AUTHOR", "Unknown")
+issue_title = os.environ.get("ISSUE_TITLE", "Unnamed Addon")
 
 lines = issue_body.strip().splitlines()
 kv_lines = []
@@ -34,11 +35,12 @@ for line in kv_lines:
     key, val = line.split(':', 1)
     addon[key.strip().lower()] = val.strip()
 
-if "name" not in addon or "download" not in addon:
+if "download" not in addon:
     print("Error: 'Name' and 'Download' are required fields.")
     sys.exit(1)
 
 addon["description"] = "\n".join(desc_lines).strip()
+addon["name"] = issue_title
 
 addon["author"] = issue_author
 addon["version"] = addon.get("version", "1.0")
