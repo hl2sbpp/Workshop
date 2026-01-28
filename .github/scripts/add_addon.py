@@ -96,11 +96,11 @@ if not download_url:
     print("Provide 'Download: <url>' or include a .zip/.vpk URL in the issue/comment.")
     sys.exit(1)
 
+original_url = download_url
 download_url = convert_to_direct_link(download_url)
 
-if not (download_url.lower().endswith('.zip') or download_url.lower().endswith('.vpk')):
+if original_url == download_url and not (download_url.lower().endswith('.zip') or download_url.lower().endswith('.vpk')):
     print(f"Error: Download URL must point to a .zip or .vpk file. Got: {download_url}")
-    print("Make sure your Google Drive or MediaFire link points to a .zip or .vpk file.")
     sys.exit(1)
 
 addons_dir = Path("addons")
@@ -160,7 +160,7 @@ if not preview_url:
         preview_url = img_match.group(1)
 
 if not preview_url:
-    img_match = re.search(r"!\[.*?\]\((https?://\S+\.(?:png|jpg|jpeg|gif|webp))\)", selected_text, re.IGNORECASE)
+    img_match = re.search(r"!\[.*?\]\((https?://[^\)]+)\)", selected_text, re.IGNORECASE)
     if img_match:
         preview_url = img_match.group(1)
 
