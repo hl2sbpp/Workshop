@@ -121,7 +121,7 @@ try:
         except Exception as lfs_error:
             print(f"Warning: Could not set up Git LFS: {lfs_error}")
     
-    download_url = f"https://github.com/{repo}/raw/main/addons/{local_addon_file.name}"
+    download_url = f"https://raw.githubusercontent.com/{repo}/main/addons/{local_addon_file.name}"
 except Exception as e:
     print(f"Error: Failed to download and re-host addon file: {e}")
     print("The addon file must be accessible for download.")
@@ -139,7 +139,7 @@ desc_text = re.sub(r"^https?://\S+$", "", desc_text, flags=re.MULTILINE).strip()
 addon["description"] = desc_text or "No Description"
 
 preview_url = None
-default_preview = f"https://github.com/{repo}/raw/main/thumbs/unknown.png"
+default_preview = f"https://raw.githubusercontent.com/{repo}/main/thumbs/unknown.png"
 local_thumb_file = None
 
 if "preview" in addon:
@@ -177,7 +177,7 @@ if preview_url:
             f.write(r.content)
         
         local_thumb_file = local_file
-        addon["preview"] = f"https://github.com/{repo}/raw/main/thumbs/{local_file.name}"
+        addon["preview"] = f"https://raw.githubusercontent.com/{repo}/main/thumbs/{local_file.name}"
     except Exception:
         addon["preview"] = default_preview
 else:
