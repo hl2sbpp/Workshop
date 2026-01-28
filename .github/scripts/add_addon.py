@@ -79,9 +79,7 @@ addon["author"] = addon.get("author", issue_author or "Unknown")
 addon["version"] = addon.get("version", "1.0")
 
 desc_text = "\n".join(desc_lines).strip()
-
 desc_text = re.sub(r"Download:\s*https?://\S+", "", desc_text, flags=re.IGNORECASE).strip()
-
 desc_text = re.sub(r"^https?://\S+$", "", desc_text, flags=re.MULTILINE).strip()
 addon["description"] = desc_text or "No Description"
 
@@ -90,6 +88,11 @@ default_preview = f"https://raw.githubusercontent.com/{repo}/main/thumbs/unknown
 
 if "preview" in addon:
     preview_url = addon["preview"].strip().strip("\"'")
+
+if not preview_url:
+    img_match = re.search(r'<img[^>]+src=["\'](https?://[^"\']+)["\']', selected_text, re.IGNORECASE)
+    if img_match:
+        preview_url = img_match.group(1)
 
 if not preview_url:
     img_match = re.search(r"!\[.*?\]\((https?://\S+\.(?:png|jpg|jpeg|gif|webp))\)", selected_text, re.IGNORECASE)
@@ -106,7 +109,7 @@ if not preview_url:
 if preview_url:
     ext_match = re.search(r"\.(png|jpg|jpeg|gif|webp)(?:\?|$)", preview_url, re.IGNORECASE)
     ext = f".{ext_match.group(1).lower()}" if ext_match else ".png"
-
+    
     safe_name = re.sub(r"[^\w\-]", "_", addon["name"])
     local_file = thumbs_dir / f"{safe_name}{ext}"
     
@@ -117,7 +120,7 @@ if preview_url:
         
         with open(local_file, "wb") as f:
             f.write(r.content)
-
+        
         addon["preview"] = f"https://raw.githubusercontent.com/{repo}/main/thumbs/{local_file.name}"
         print(f"Thumbnail saved to: thumbs/{local_file.name}")
     except Exception as e:
