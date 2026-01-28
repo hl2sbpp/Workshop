@@ -69,6 +69,16 @@
       "preview": "https://raw.githubusercontent.com/hl2sbpp/Workshop/main/thumbs/Zombie_Snpc_Test.png",
       "size_mb": 4,
       "id": 1030
+    },
+    {
+      "name": "Mlg sniper",
+      "author": "therizzler-dot",
+      "version": "1.0",
+      "description": "Name: MLG Sniper\nVersion: 1.0\nDownload: \n\n[MLG Snipertest.zip](https://github.com/user-attachments/files/24920480/MLG.Snipertest.zip)\n\nAre you part of the major league gaming?",
+      "download_url": "https://raw.githubusercontent.com/hl2sbpp/Workshop/main/addons/Mlg_sniper.zip",
+      "preview": "https://raw.githubusercontent.com/hl2sbpp/Workshop/main/thumbs/Mlg_sniper.png",
+      "size_mb": 11,
+      "id": 1031
     }
   ]
 }
