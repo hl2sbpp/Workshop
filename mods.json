@@ -89,6 +89,16 @@
       "preview": "https://raw.githubusercontent.com/hl2sbpp/Workshop/main/thumbs/Roblox_natural_disaster_survival.png",
       "size_mb": 32,
       "id": 1032
+    },
+    {
+      "name": "Roblox's food",
+      "author": "sunxiaochuanshixue",
+      "version": "1.0",
+      "description": "Name: Roblox's food\nVersion: 1.0\n\n\nThere's nothing to say. Three foods have been added to this swep, namely spacsandwich, burger and pizza. Right-clicking will play audio. At present, it's only a beta version, and I will continue to add items later.Oh, by the way, there is also a map attached.\nHave fun.",
+      "download_url": "https://raw.githubusercontent.com/hl2sbpp/Workshop/main/addons/Roblox_s_food.vpk",
+      "preview": "https://raw.githubusercontent.com/hl2sbpp/Workshop/main/thumbs/unknown.png",
+      "size_mb": 8,
+      "id": 1033
     }
   ]
 }
