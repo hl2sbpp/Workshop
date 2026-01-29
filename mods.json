@@ -79,6 +79,16 @@
       "preview": "https://raw.githubusercontent.com/hl2sbpp/Workshop/main/thumbs/Mlg_sniper.png",
       "size_mb": 11,
       "id": 1031
+    },
+    {
+      "name": "Roblox natural disaster survival",
+      "author": "sunxiaochuanshixue",
+      "version": "1.0",
+      "description": "Name: Roblox natural disaster survival\nVersion: 1.0\n\n\nIt's just a test. I just uploaded a map.",
+      "download_url": "https://raw.githubusercontent.com/hl2sbpp/Workshop/main/addons/Roblox_natural_disaster_survival.vpk",
+      "preview": "https://raw.githubusercontent.com/hl2sbpp/Workshop/main/thumbs/Roblox_natural_disaster_survival.png",
+      "size_mb": 32,
+      "id": 1032
     }
   ]
 }
