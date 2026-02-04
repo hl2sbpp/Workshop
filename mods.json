@@ -99,6 +99,16 @@
       "preview": "https://raw.githubusercontent.com/hl2sbpp/Workshop/main/thumbs/unknown.png",
       "size_mb": 8,
       "id": 1033
+    },
+    {
+      "name": "Old SCP : SL Scientist",
+      "author": "Finker234",
+      "version": "1.0",
+      "description": "Name: Old SCP : SL Scientist [PM]\nVersion: 1.1\n\n\nPorted By : Finker (ME)",
+      "download_url": "https://raw.githubusercontent.com/hl2sbpp/Workshop/main/addons/Old_SCP___SL_Scientist.vpk",
+      "preview": "https://raw.githubusercontent.com/hl2sbpp/Workshop/main/thumbs/Old_SCP___SL_Scientist.png",
+      "size_mb": 1,
+      "id": 1034
     }
   ]
 }
