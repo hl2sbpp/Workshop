@@ -109,6 +109,16 @@
       "preview": "https://raw.githubusercontent.com/hl2sbpp/Workshop/main/thumbs/Old_SCP___SL_Scientist.png",
       "size_mb": 1,
       "id": 1034
+    },
+    {
+      "name": "Addon",
+      "author": "kaosorawitch-cyber",
+      "version": "1.0",
+      "description": "Name: PM Cameraman\nVersion: 1.0",
+      "download_url": "https://raw.githubusercontent.com/hl2sbpp/Workshop/main/addons/Addon.zip",
+      "preview": "https://raw.githubusercontent.com/hl2sbpp/Workshop/main/thumbs/Addon.png",
+      "size_mb": 57,
+      "id": 1035
     }
   ]
 }
