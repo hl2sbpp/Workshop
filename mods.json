@@ -129,6 +129,16 @@
       "preview": "https://raw.githubusercontent.com/hl2sbpp/Workshop/main/thumbs/Addon.png",
       "size_mb": 1,
       "id": 1036
+    },
+    {
+      "name": "PM Cameraman",
+      "author": "kaosorawitch-cyber",
+      "version": "1.0",
+      "description": "Name: PM Cameraman\nVersion: 1.0",
+      "download_url": "https://raw.githubusercontent.com/hl2sbpp/Workshop/main/addons/PM_Cameraman.zip",
+      "preview": "https://raw.githubusercontent.com/hl2sbpp/Workshop/main/thumbs/PM_Cameraman.png",
+      "size_mb": 57,
+      "id": 1037
     }
   ]
 }
