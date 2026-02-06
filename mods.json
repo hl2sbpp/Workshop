@@ -149,6 +149,16 @@
       "preview": "https://raw.githubusercontent.com/hl2sbpp/Workshop/main/thumbs/C_Hands_CM.png",
       "size_mb": 1,
       "id": 1038
+    },
+    {
+      "name": "Cameraman Pack V1",
+      "author": "kaosorawitch-cyber",
+      "version": "1.0",
+      "description": "Name: Cameraman Pack V1\nVersion: 1.0",
+      "download_url": "https://raw.githubusercontent.com/hl2sbpp/Workshop/main/addons/Cameraman_Pack_V1.vpk",
+      "preview": "https://raw.githubusercontent.com/hl2sbpp/Workshop/main/thumbs/Cameraman_Pack_V1.png",
+      "size_mb": 1,
+      "id": 1039
     }
   ]
 }
